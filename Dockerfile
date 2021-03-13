@@ -1,9 +1,11 @@
 FROM ubuntu:bionic-20210222
 
 ARG TERRAFORM_VERSION="0.14.8"
+ARG ANSIBLE_VERSION="2.10.6"
 
 LABEL maintainer="Sivakumar Vunnam <sivakumarvunnam1@gmail.com>"
 LABEL terraform_version=${TERRAFORM_VERSION}
+LABEL ansible_version=${ANSIBLE_VERSION}
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERRAFORM_VERSION=${TERRAFORM_VERSION}
