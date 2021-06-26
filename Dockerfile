@@ -1,8 +1,8 @@
 FROM ubuntu:bionic-20210222
 
-ARG TERRAFORM_VERSION="0.14.8"
+ARG TERRAFORM_VERSION="0.15.5"
 ARG ANSIBLE_VERSION="2.10.6"
-ARG PACKER_VERSION="1.7.0"
+ARG PACKER_VERSION="1.7.3"
 ARG AWSCLI_VERSION="1.19.27"
 
 LABEL maintainer="Sivakumar Vunnam <sivakumarvunnam1@gmail.com>"
@@ -25,5 +25,9 @@ RUN apt-get update \
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+WORKDIR /opt/app
+
+VOLUME ["/opt/app"]
 
 CMD ["/bin/bash"]

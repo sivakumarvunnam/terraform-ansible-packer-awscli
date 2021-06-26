@@ -2,14 +2,14 @@
 
 Builds a docker image containing:
 
-  * terraform v0.14.8
+  * terraform v0.15.5
   * ansible   v2.10.6
   * awscli    v1.19.27
-  * packer    v1.7.0
+  * packer    v1.7.3
 
 ## Building Docker Image
 ```bash
-docker build -t sivakumarvunnam/terraform-ansible-packer-awscli .
+docker build -t sivakumarvunnam/terraform-ansible-packer-awscli:v1 .
 ```
 
 ## Bash Functions
@@ -25,7 +25,7 @@ docker-terraform ()
              -v $(pwd):/opt/ \
              -v ~/.aws:/root/.aws \
              -v ~/.ssh:/root/.ssh \
-             sivakumarvunnam/terraform-ansible-packer-awscli terraform $@
+             sivakumarvunnam/terraform-ansible-packer-awscli:v1 terraform $@
 }
 
 docker-ansible ()
@@ -35,7 +35,7 @@ docker-ansible ()
              -v $(pwd):/opt/ \
              -v ~/.aws:/root/.aws \
              -v ~/.ssh:/root/.ssh \
-             sivakumarvunnam/terraform-ansible-packer-awscli ansible $@
+             sivakumarvunnam/terraform-ansible-packer-awscli:v1 ansible $@
 }
 
 docker-packer ()
@@ -45,7 +45,7 @@ docker-packer ()
              -v $(pwd):/opt/ \
              -v ~/.aws:/root/.aws \
              -v ~/.ssh:/root/.ssh \
-             sivakumarvunnam/terraform-ansible-packer-awscli packer $@
+             sivakumarvunnam/terraform-ansible-packer-awscli:v1 packer $@
 }
 
 docker-aws ()
@@ -55,7 +55,7 @@ docker-aws ()
              -v $(pwd):/opt/ \
              -v ~/.aws:/root/.aws \
              -v ~/.ssh:/root/.ssh \
-             sivakumarvunnam/terraform-ansible-packer-awscli aws $@
+             sivakumarvunnam/terraform-ansible-packer-awscli:v1 aws $@
 }
 ```
 
@@ -63,7 +63,7 @@ Example usage:
 ```
 vagrant@sivakumarvunnam:~/terraform-ansible-packer-awscli$ source build.sh
 vagrant@sivakumarvunnam:~/terraform-ansible-packer-awscli$ docker-terraform --version
-Terraform v0.14.8
+Terraform v0.15.5
 vagrant@sivakumarvunnam:~/terraform-ansible-packer-awscli$ docker-ansible --version
 ansible 2.5.1
   config file = /etc/ansible/ansible.cfg
@@ -72,7 +72,7 @@ ansible 2.5.1
   executable location = /usr/bin/ansible
   python version = 2.7.17 (default, Feb 27 2021, 15:10:58) [GCC 7.5.0]
 vagrant@sivakumarvunnam:~/terraform-ansible-packer-awscli$ docker-packer --version
-1.7.0
+1.7.3
 vagrant@sivakumarvunnam:~/terraform-ansible-packer-awscli$ docker-aws --version
 aws-cli/1.19.27 Python/3.6.9 Linux/4.19.130-boot2docker botocore/1.20.27
 ```
